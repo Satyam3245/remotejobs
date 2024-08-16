@@ -6,6 +6,7 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+// Add a Link of a Job Where a user can apply 
 model Jobs{
   id String @default(uuid()) @unique @id
   company_name String
@@ -16,4 +17,11 @@ model Jobs{
   salary Int @default(5000)
   createdAt DateTime @default(now())
   skill String[]
+}
+model User {
+  id String @id @default(uuid())
+  name String
+  email String @unique()
+  password String
+  createdAt DateTime @default(now())
 }

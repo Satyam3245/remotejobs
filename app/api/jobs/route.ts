@@ -1,4 +1,4 @@
-import { createUser, getJobs } from '@/orm/prisma';
+import { createJob, getJobs } from '@/orm/prisma';
 import { NextRequest, NextResponse } from 'next/server';
 interface JobInterface{
     company_name : string
@@ -14,7 +14,7 @@ export async function POST(req: NextRequest) {
     const body: JobInterface = await req.json();
 
     try {
-        const response = await createUser(body);
+        const response = await createJob(body);
 
         if (response === 'create') {
             return NextResponse.json({

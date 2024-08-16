@@ -9,7 +9,12 @@ interface Job{
     skill: string[];
     salary : number
 }
-export async function createUser({company_name, role,location,skill,salary,domain,employment_type}:any):Promise<string|null>{
+interface User {
+    email : string
+    password : string
+    name : string
+}
+export async function createJob({company_name, role,location,skill,salary,domain,employment_type}:any):Promise<string|null>{
     try{
         await prisma.$connect()
         await prisma.jobs.create({
@@ -37,6 +42,24 @@ export async function getJobs():Promise<Job[]|null>{
         return jobs;
     } catch (error) {
         return null;
+    }finally{
+        await prisma.$disconnect();
+    }
+}
+
+export async function createUser({email , password,name}:User):Promise<string|null>{
+    try{
+        await prisma.$connect()
+        await prisma.user.create({
+            data:{
+                email,
+                password,
+                name
+            }
+        })
+        return 'create'
+    }catch{
+        return null
     }finally{
         await prisma.$disconnect();
     }
