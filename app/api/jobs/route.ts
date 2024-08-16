@@ -5,6 +5,9 @@ interface JobInterface{
     role : String
     location : String
     skill :String[]
+    salary : number
+    domain : string
+    employment_type : string
 }
 
 export async function POST(req: NextRequest) {
@@ -15,7 +18,7 @@ export async function POST(req: NextRequest) {
 
         if (response === 'create') {
             return NextResponse.json({
-                 msg: 'User is Successfully Entered' ,
+                 msg: 'Job is Successfully Entered' ,
                  status: 200 
         });
         } else {
@@ -35,15 +38,16 @@ export async function POST(req: NextRequest) {
 export async function GET() {
     try {
         const Response = await getJobs(); 
-        if(Response==null){
+        
+        if(!Response){
             NextResponse.json({
                 msg:'Something Happened to our Database !',
                 status : 500
             })
         }else{
-            NextResponse.json({
+            return NextResponse.json(
                 Response
-            })
+            )
         }
     } catch(error){
         return NextResponse.json({

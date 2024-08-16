@@ -7,10 +7,13 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 model Jobs{
-  id String @default(uuid()) @unique
+  id String @default(uuid()) @unique @id
   company_name String
+  employment_type String @default("")
+  Domain String @default("")
   role String
   location String
+  salary Int @default(5000)
   createdAt DateTime @default(now())
   skill String[]
 }

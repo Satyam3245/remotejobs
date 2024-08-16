@@ -1,7 +1,7 @@
 import React from "react"
 
  export const Footer:React.FC = ()=>{
-    return <div className="bg-gray-800 text-white">
+    return <div className="bg-black text-white">
         <div className="flex justify-between py-7 px-[60px] items-center">
             <div>
                 <div className="text-4xl font-semibold">100xdevs</div>

@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "Jobs" ADD COLUMN     "salary" INTEGER NOT NULL DEFAULT 5000;

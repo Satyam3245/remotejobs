@@ -1,11 +1,5 @@
 import { PrismaClient } from "@prisma/client"; 
 const prisma = new PrismaClient();
-interface jobInterface{
-    company_name : string
-    role : String
-    location : String
-    skill :String[]
-}
 interface Job{
     id: string;
     company_name: string;
@@ -13,8 +7,9 @@ interface Job{
     location: string;
     createdAt: Date;
     skill: string[];
+    salary : number
 }
-export async function createUser({company_name, role,location,skill}:any):Promise<string|null>{
+export async function createUser({company_name, role,location,skill,salary,domain,employment_type}:any):Promise<string|null>{
     try{
         await prisma.$connect()
         await prisma.jobs.create({
@@ -23,6 +18,9 @@ export async function createUser({company_name, role,location,skill}:any):Promis
                 role: role,
                 location: location,
                 skill: skill,
+                salary : salary,
+                Domain : domain,
+                employment_type : employment_type
             }
         })
         return 'create'

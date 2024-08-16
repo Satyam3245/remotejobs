@@ -1,6 +1,7 @@
 import React from "react";
-export const Jobs:React.FC = ()=>{
+import { Jobs } from "./Jobs";
+export const Content:React.FC = ()=>{
     return <div>
-        
+        <Jobs/>
     </div>
 }
