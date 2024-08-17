@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button"
 import { Moon } from "lucide-react"
 import { PremiumButton } from "./Premium/Premium"
+import { SignUpButton } from "./Button/SignupButton"
 export const AppBar = ()=>{
     return <div className="bg-black">
         <div className="flex justify-between items-center mx-10 p-7 ">
@@ -14,6 +15,9 @@ export const AppBar = ()=>{
                 </div>
                 <div>
                     <Button className="bg-white text-black">Login</Button>
+                </div>
+                <div>
+                    <SignUpButton/>
                 </div>
                 <div>
                     <Button className="bg-white text-black">Post a Job</Button>
