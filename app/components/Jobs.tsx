@@ -1,6 +1,7 @@
 "use client"
 import axios from "axios"
 import React, { useEffect, useState } from "react"
+import { Loader } from "./Loader"
 interface Job{
     id: string;
     company_name: string;
@@ -39,8 +40,8 @@ export const Jobs:React.FC = ()=>{
         </div>
     }
     if(loading){
-        return <div className="text-white">
-            Loading...
+        return <div className="flex justify-center items-center">
+            <Loader/>
         </div>
     }
     const daysAgo = (dateString: string): string => {
@@ -49,9 +50,9 @@ export const Jobs:React.FC = ()=>{
         const differenceInDays = Math.floor(differenceInMillis / (1000 * 60 * 60 * 24));
         return differenceInDays === 0 ? 'Today' : `${differenceInDays} day${differenceInDays > 1 ? 's' : ''} ago`;
     };
-    return <div className="">
+    return <div>
         {jobs.map(job=>(
-            <div id={job.id} className="mx-[250px] mb-4 rounded-3xl flex justify-between bg-gray-800 text-white p-5 hover:bg-gray-900">
+            <a id={job.id} className="mx-[250px] mb-4 rounded-3xl flex justify-between bg-gray-800 text-white p-5 hover:bg-gray-900">
                 <div className="flex flex-col gap-y-2">
                     <div className="text-2xl">{job.company_name}——{job.role}</div>
                     <div className="text-gray-300 text-sm">${job.salary}+,{job.Domain}, {job.employment_type}</div>
@@ -70,7 +71,7 @@ export const Jobs:React.FC = ()=>{
                         <div className="rounded-xl p-2 bg-gray-900">+{job.skill.length - skillShow} More</div>
                     </div>
                 </div>
-            </div>
+            </a>
         ))}
     </div>
 }

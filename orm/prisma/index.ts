@@ -64,3 +64,16 @@ export async function createUser({email , password,name}:User):Promise<string|nu
         await prisma.$disconnect();
     }
 }
+export async function findJob(id:string):Promise<{}|null>{
+    try {
+        const job = await prisma.jobs.findFirst({
+            where:{
+                id,
+            }
+        })
+        return job
+    } catch (error) {
+        console.log(error);
+        return null;
+    }
+}
